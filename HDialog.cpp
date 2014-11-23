@@ -240,6 +240,11 @@ void HDialogApp::ArgvReceived(int32 argc, char** argv)
 		}
 	}
 
+	if (fWidth <= 0 || fHeight <= 0) {
+		cerr << "Invalid dimensions specified!" << endl;
+		Quit();
+	}
+
 	switch(fType) {
 	case DIALOG_INFO:
 	case DIALOG_INPUT:
