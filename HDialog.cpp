@@ -272,8 +272,14 @@ HDialogApp::~HDialogApp()
 	delete fArgs;
 }
 
-int main()
+int main(int argc, char**)
 {
+	// We need to check here as ArgvReceived is not called for argc < 2
+	if (argc < 2) {
+		cout << kUsage;
+		return -1;
+	}
+
 	HDialogApp app;
 	app.Run();
 
