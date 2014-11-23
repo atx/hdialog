@@ -59,6 +59,7 @@ private:
 	enum HDialogType		fType = DIALOG_INFO;
 	int						fWidth = 300;
 	int						fHeight = 100;
+	bool					fForceSize = false;
 	BString					fText;
 	BObjectList<BString>*	fArgs = NULL;
 	BView*					fView;

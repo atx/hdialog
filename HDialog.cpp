@@ -105,10 +105,6 @@ void HDialogApp::ReadyToRun()
 			fIsModal ? B_MODAL_WINDOW : B_TITLED_WINDOW,
 			B_NOT_ANCHORED_ON_ACTIVATE | B_NOT_CLOSABLE | B_NOT_RESIZABLE);
 
-	// We need to wrap the elements in BBox to get the correct border color
-	BBox* box = new BBox(frame);
-	win->AddChild(box);
-
 	switch(fType) {
 	case DIALOG_INFO:
 		fView = new InfoView(frame, fText);
@@ -132,7 +128,12 @@ void HDialogApp::ReadyToRun()
 		Quit();
 		return;
 	}
-	box->AddChild(fView);
+	win->AddChild(fView);
+
+	if (!fForceSize) {
+		BSize size = fView->GetLayout()->PreferredSize();
+		win->ResizeTo(size.width, size.height);
+	}
 
 	win->CenterOnScreen();
 	win->Show();
@@ -225,9 +226,11 @@ void HDialogApp::ArgvReceived(int32 argc, char** argv)
 			break;
 		case 'w':
 			fWidth = atoi(optarg);
+			fForceSize = true;
 			break;
 		case 'h':
 			fHeight = atoi(optarg);
+			fForceSize = true;
 			break;
 		case 'm':
 			fIsModal = true;
