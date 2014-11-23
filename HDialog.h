@@ -56,7 +56,7 @@ private:
 	static status_t			StdinThread(void *);
 	void					HandleReadline(BString line);
 
-	enum HDialogType		fType;
+	enum HDialogType		fType = DIALOG_INFO;
 	int						fWidth = 300;
 	int						fHeight = 100;
 	BString					fText;
