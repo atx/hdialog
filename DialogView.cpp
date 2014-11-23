@@ -30,9 +30,8 @@ DialogView::DialogView(BRect frame, BString title)
 {
 	SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 
-	fLayout = new BGroupLayout(B_VERTICAL);
-	fLayout->SetInsets(5, 5, 5, 5);
-	fLayout->SetSpacing(10);
+	fLayout = new BGroupLayout(B_VERTICAL, B_USE_ITEM_SPACING);
+	fLayout->SetInsets(B_USE_WINDOW_INSETS);
 	SetLayout(fLayout);
 
 	fStringView = new BStringView(NULL, title);
