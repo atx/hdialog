@@ -35,6 +35,9 @@ RadioView::RadioView(BRect frame, BString title, BObjectList<BString> choices,
 {
 	fIsRadios = radio;
 
+	BGroupLayout* grp = new BGroupLayout(B_VERTICAL, 0);
+	fLayout->AddItem(grp);
+
 	for (int i = 0; i < choices.CountItems(); i++) {
 		BControl* cnt;
 		if (fIsRadios)
@@ -42,7 +45,7 @@ RadioView::RadioView(BRect frame, BString title, BObjectList<BString> choices,
 		else
 			cnt = new BCheckBox(*choices.ItemAt(i), NULL);
 		fControls.AddItem(cnt);
-		fLayout->AddView(cnt);
+		grp->AddView(cnt);
 	}
 
 	fButton = new BButton(bstr, new BMessage(MSG_PRESS));
