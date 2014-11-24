@@ -35,7 +35,6 @@ DialogView::DialogView(BRect frame, BString title)
 	SetLayout(fLayout);
 
 	fStringView = new BStringView(NULL, title);
-	fStringView->SetAlignment(B_ALIGN_CENTER);
 	fLayout->AddView(fStringView);
 }
 
