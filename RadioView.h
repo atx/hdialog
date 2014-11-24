@@ -26,7 +26,7 @@
 #define _RADIOVIEW_H
 
 #include <Button.h>
-#include <RadioButton.h>
+#include <Control.h>
 #include <ObjectList.h>
 
 #include "DialogView.h"
@@ -34,15 +34,17 @@
 class RadioView : public DialogView {
 public:
 					RadioView(BRect frame, BString title,
-							BObjectList<BString> choices, BString bstr="OK");
+							BObjectList<BString> choices, bool radio=true,
+							BString bstr="OK");
 	virtual			~RadioView();
 
 	virtual void	MessageReceived(BMessage *msg);
 	virtual void	AttachedToWindow();
 
 private:
-	BObjectList<BRadioButton>	fRadios;
+	BObjectList<BControl>		fControls;
 	BButton*					fButton;
+	bool						fIsRadios;
 };
 
 #endif

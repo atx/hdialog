@@ -22,18 +22,27 @@
  * SOFTWARE.
  */
 
+#include <RadioButton.h>
+#include <CheckBox.h>
+
 #include "HDialog.h"
 #include "RadioView.h"
 
 RadioView::RadioView(BRect frame, BString title, BObjectList<BString> choices,
-			BString bstr)
+			bool radio, BString bstr)
 	:
 	DialogView(frame, title)
 {
+	fIsRadios = radio;
+
 	for (int i = 0; i < choices.CountItems(); i++) {
-		BRadioButton* rad = new BRadioButton(*choices.ItemAt(i), NULL);
-		fRadios.AddItem(rad);
-		fLayout->AddView(rad);
+		BControl* cnt;
+		if (fIsRadios)
+			cnt = new BRadioButton(*choices.ItemAt(i), NULL);
+		else
+			cnt = new BCheckBox(*choices.ItemAt(i), NULL);
+		fControls.AddItem(cnt);
+		fLayout->AddView(cnt);
 	}
 
 	fButton = new BButton(bstr, new BMessage(MSG_PRESS));
@@ -52,17 +61,26 @@ void RadioView::AttachedToWindow()
 void RadioView::MessageReceived(BMessage* msg)
 {
 	switch (msg->what) {
-	case MSG_PRESS:
-		for(int i = 0; i < fRadios.CountItems(); i++) {
-			BRadioButton* radio = fRadios.ItemAt(i);
-			if (radio->Value() == B_CONTROL_ON) {
-				BMessage* nmsg = new BMessage(MSG_SELECTED);
-				nmsg->SetString("value", radio->Label());
-				be_app->PostMessage(nmsg);
-				break;
+	case MSG_PRESS: {
+		BMessage* nmsg = new BMessage(MSG_SELECTED);
+		BString acc = "";
+		bool chosen = false;
+		for(int i = 0; i < fControls.CountItems(); i++) {
+			BControl* cnt = fControls.ItemAt(i);
+			if (cnt->Value() == B_CONTROL_ON) {
+				if (chosen)
+					acc << '\n';
+				acc << cnt->Label();
+				chosen = true;
 			}
 		}
+		// Force a choice for radio buttons
+		if (fIsRadios && !chosen)
+			break;
+		nmsg->SetString("value", acc);
+		be_app->PostMessage(nmsg);
 		break;
+	}
 	default:
 		DialogView::MessageReceived(msg);
 	}

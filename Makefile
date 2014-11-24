@@ -31,7 +31,7 @@ TYPE= APP
 #	are included from different directories.  Also note that spaces
 #	in folder names do not work well with this makefile.
 SRCS= HDialog.cpp InfoView.cpp InputView.cpp DialogView.cpp StatusView.cpp \
-	  RadioView.cpp CheckBoxView.cpp YesNoView.cpp
+	  RadioView.cpp YesNoView.cpp
 
 #	specify the resource files to use
 #	full path or a relative path to the resource file can be used.

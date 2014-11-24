@@ -40,7 +40,6 @@
 #include "InputView.h"
 #include "StatusView.h"
 #include "RadioView.h"
-#include "CheckBoxView.h"
 #include "YesNoView.h"
 
 #include <iostream>
@@ -119,7 +118,7 @@ void HDialogApp::ReadyToRun()
 		fView = new RadioView(frame, fText, *fArgs);
 		break;
 	case DIALOG_CHECKBOX:
-		fView = new CheckBoxView(frame, fText, *fArgs);
+		fView = new RadioView(frame, fText, *fArgs, false);
 		break;
 	case DIALOG_YESNO:
 		fView = new YesNoView(frame, fText);
