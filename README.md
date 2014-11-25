@@ -41,57 +41,52 @@ GitHub: https://github.com/atalax/hdialog
 You can create standard `alert`-like dialogs:
 
 ```
-$ hdialog -h 80 --title Done! --info Finished downloading all files
+$ hdialog -m --info "Finished downloading all files."
 ```
 
-![simple-info](https://cloud.githubusercontent.com/assets/3966931/5158219/cf1e59f2-7335-11e4-97d7-103d1a317c71.png)
+![simple-info](https://cloud.githubusercontent.com/assets/3966931/5182640/0e5cbe4a-74a5-11e4-8ab9-78c47e3dfabe.png)
 
 ```
-$ hdialog --title "Delete" --yesno "Do you really want to delete ~ ?"
+$ hdialog -m --yesno "Do you really want to delete ~ ?"
 ```
 
-![yesno](https://cloud.githubusercontent.com/assets/3966931/5158310/e762d076-7338-11e4-9e06-4e9071083554.png)
+![yesno](https://cloud.githubusercontent.com/assets/3966931/5184287/6d79a2ba-74b6-11e4-96be-2b91be477471.png)
 
 Ask for textual input:
 
 ```
-$ hdialog --title Hello! --input "Hello, what's yout name? :)"
+$ hdialog -m --input "Hello, what's yout name? :)"
 ```
 
-![name-input](https://cloud.githubusercontent.com/assets/3966931/5158244/68c1650e-7336-11e4-97ce-f762f3d42cf5.png)
+![name-input](https://cloud.githubusercontent.com/assets/3966931/5182914/b51a726a-74a8-11e4-80f3-d3ffefd7ed8c.png)
 
 You can also do selections from multiple items:
 
 ```
-$ hdialog -h 260 --title "Colors" --radio "Which is your favourite color?" Red Yellow Green Orange Blue
+$ hdialog -m --radio "Which is your favourite color?" Red Yellow Green Orange Blue
 ```
 
-![radio-colors](https://cloud.githubusercontent.com/assets/3966931/5158294/35171ca6-7338-11e4-8cb2-d8aa5ca9d90d.png)
+![radio-colors](https://cloud.githubusercontent.com/assets/3966931/5182967/5eeefe14-74a9-11e4-9673-3a9fd40033da.png)
 
-![checkbox](https://cloud.githubusercontent.com/assets/3966931/5158321/657f4a48-7339-11e4-94ee-dca9cb2831a7.png)
+You can remove the -m switch and get the standard non-modal window look:
+
+```
+$ hdialog --title Animals --checkbox "Which of the following are animals?" House Cow Dog Pencil Cat
+```
+![checkbox](https://cloud.githubusercontent.com/assets/3966931/5182989/c7cfb342-74a9-11e4-8b85-0a534ed9afe3.png)
 
 The results are then returned using the standard output.
 
 For displaying progress, `--status` can be used:
 
 ```
-$ hdialog -h 80 -w 170 --title Download --status Downloading...
+$ hdialog -m -h 70 -w 300 --status Downloading...
 ```
 
-![status](https://cloud.githubusercontent.com/assets/3966931/5158348/3c2e0e94-733a-11e4-8146-b3e1e3c94eec.png)
+![status](https://cloud.githubusercontent.com/assets/3966931/5183014/1bd38f2c-74aa-11e4-84d6-b9df41b60034.png)
 
 You can control the status bar by piping percentages to stdin and terminate it by `quit` like this:
 
 ```
 $ (for x in $(seq 0 100); do echo $x; sleep 0.1; done; echo quit) | hdialog --status Counting...
 ```
-
-There is also the `--modal` switch which changes the way the dialog looks:
-
-```
-$ hdialog -w 220 --info --modal Nuclear meltdown imminent!
-```
-
-![modal](https://cloud.githubusercontent.com/assets/3966931/5158395/d3172d94-733b-11e4-8799-7a79acdd1f0b.png)
-
-
