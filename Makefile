@@ -7,7 +7,7 @@
 ## Application Specific Settings ---------------------------------------------
 
 # specify the name of the binary
-NAME= hnotify
+NAME= hdialog
 
 # specify the type of binary
 #	APP:	Application
