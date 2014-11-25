@@ -25,6 +25,7 @@
 #include <StringView.h>
 #include <GroupLayout.h>
 #include <TextControl.h>
+#include <Alignment.h>
 
 #include "HDialog.h"
 #include "InputView.h"
@@ -39,6 +40,7 @@ InputView::InputView(BRect frame, BString title, BString initial, BString bstr)
 	fLayout->AddView(fTextControl);
 
 	fButton = new BButton(bstr, new BMessage(MSG_PRESS));
+	fButton->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_VERTICAL_UNSET));
 	fLayout->AddView(fButton);
 }
 

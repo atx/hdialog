@@ -24,6 +24,7 @@
 
 #include <RadioButton.h>
 #include <CheckBox.h>
+#include <Alignment.h>
 
 #include "HDialog.h"
 #include "RadioView.h"
@@ -49,6 +50,7 @@ RadioView::RadioView(BRect frame, BString title, BObjectList<BString> choices,
 	}
 
 	fButton = new BButton(bstr, new BMessage(MSG_PRESS));
+	fButton->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_VERTICAL_UNSET));
 	fLayout->AddView(fButton);
 }
 

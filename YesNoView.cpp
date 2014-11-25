@@ -22,6 +22,8 @@
  * SOFTWARE.
  */
 
+#include <Alignment.h>
+
 #include "HDialog.h"
 #include "YesNoView.h"
 
@@ -29,17 +31,20 @@ YesNoView::YesNoView(BRect frame, BString title)
 	:
 	DialogView(frame, title)
 {
-	BGroupLayout* gl = new BGroupLayout(B_HORIZONTAL);
+	BGroupLayout* gl = new BGroupLayout(B_HORIZONTAL, B_USE_SMALL_SPACING);
+	gl->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_VERTICAL_UNSET));
 	fLayout->AddItem(gl);
 
 	BMessage* ymsg = new BMessage(MSG_SELECTED);
 	ymsg->AddString("value", "yes");
 	fYesBtn = new BButton("Yes", ymsg);
+	fYesBtn->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_VERTICAL_UNSET));
 	gl->AddView(fYesBtn);
 
 	BMessage* nmsg = new BMessage(MSG_SELECTED);
 	nmsg->AddString("value", "no");
 	fNoBtn = new BButton("No", nmsg);
+	fNoBtn->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_VERTICAL_UNSET));
 	gl->AddView(fNoBtn);
 }
 

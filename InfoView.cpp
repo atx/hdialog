@@ -24,6 +24,7 @@
 
 #include <StringView.h>
 #include <GroupLayout.h>
+#include <Alignment.h>
 
 #include "HDialog.h"
 #include "InfoView.h"
@@ -33,6 +34,7 @@ InfoView::InfoView(BRect frame, BString title, BString bstr)
 	DialogView(frame, title)
 {
 	BButton* btn = new BButton(bstr, new BMessage(MSG_SELECTED));
+	btn->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_VERTICAL_UNSET));
 	fLayout->AddView(btn);
 	btn->SetTarget(be_app);
 }
