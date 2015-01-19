@@ -57,4 +57,5 @@ void YesNoView::AttachedToWindow()
 {
 	fYesBtn->SetTarget(be_app);
 	fNoBtn->SetTarget(be_app);
+	Window()->SetDefaultButton(fYesBtn);
 }

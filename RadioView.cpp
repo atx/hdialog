@@ -62,6 +62,7 @@ RadioView::~RadioView()
 void RadioView::AttachedToWindow()
 {
 	fButton->SetTarget(this);
+	Window()->SetDefaultButton(fButton);
 }
 
 void RadioView::MessageReceived(BMessage* msg)

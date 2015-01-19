@@ -52,6 +52,7 @@ InputView::~InputView()
 void InputView::AttachedToWindow()
 {
 	fButton->SetTarget(this);
+	Window()->SetDefaultButton(fButton);
 }
 
 void InputView::MessageReceived(BMessage* msg)

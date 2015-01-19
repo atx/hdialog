@@ -34,12 +34,17 @@ InfoView::InfoView(BRect frame, BString title, BString bstr)
 	:
 	DialogView(frame, title)
 {
-	BButton* btn = new BButton(bstr, new BMessage(MSG_SELECTED));
-	btn->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_VERTICAL_UNSET));
-	fLayout->AddView(btn);
-	btn->SetTarget(be_app);
+	fBtn = new BButton(bstr, new BMessage(MSG_SELECTED));
+	fBtn->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_VERTICAL_UNSET));
+	fLayout->AddView(fBtn);
+	fBtn->SetTarget(be_app);
 }
 
 InfoView::~InfoView()
 {
+}
+
+void InfoView::AttachedToWindow()
+{
+	Window()->SetDefaultButton(fBtn);
 }

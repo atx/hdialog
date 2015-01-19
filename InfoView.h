@@ -34,6 +34,11 @@ class InfoView : public DialogView {
 public:
 				InfoView(BRect frame, BString title, BString bstr="OK");
 	virtual		~InfoView();
+
+	void		AttachedToWindow();
+
+private:
+	BButton*	fBtn;
 };
 
 #endif
