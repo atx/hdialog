@@ -33,6 +33,7 @@ Dialog types:
   --radio text opt1 opt2 opt3...
   --checkbox text opt1 opt2 opt3...
   --status text...
+  --color text...
 
 GitHub: https://github.com/atalax/hdialog
 ```
@@ -67,6 +68,14 @@ $ hdialog -m --radio "Which is your favourite color?" Red Yellow Green Orange Bl
 ```
 
 ![radio-colors](https://cloud.githubusercontent.com/assets/3966931/5182967/5eeefe14-74a9-11e4-9673-3a9fd40033da.png)
+
+Or pick color:
+
+```
+$ hdialog -m --color Choose the color of your pony:
+```
+
+![hdialog-color](https://cloud.githubusercontent.com/assets/3966931/5802318/1310114c-9ff4-11e4-810f-9a4279c7b147.png)
 
 You can remove the -m switch and get the standard non-modal window look:
 
