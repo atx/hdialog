@@ -10,8 +10,8 @@ This tool can be used to display GUI dialogs from shell scripts.
 ```bash
 $ git clone git@github.com:atalax/hdialog.git
 $ cd hdialog
-$ make
-$ cp *objects/hdialog ~/config/non-packaged/bin/
+$ make OBJ_DIR=objects
+$ cp objects/hdialog ~/config/non-packaged/bin/
 ```
 
 #### Usage
