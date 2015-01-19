@@ -25,13 +25,13 @@
 #ifndef _HDIALOG_H
 #define _HDIALOG_H
 
+#include <Application.h>
+#include <Box.h>
 #include <OS.h>
 #include <ObjectList.h>
-#include <Application.h>
-#include <StringList.h>
 #include <String.h>
+#include <StringList.h>
 #include <Window.h>
-#include <Box.h>
 
 enum HDialogType {
 	DIALOG_INFO,

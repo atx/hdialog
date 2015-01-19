@@ -25,10 +25,10 @@
 #ifndef _DIALOGVIEW_H
 #define _DIALOGVIEW_H
 
-#include <String.h>
-#include <View.h>
 #include <GroupLayout.h>
+#include <String.h>
 #include <StringView.h>
+#include <View.h>
 
 class DialogView : public BView {
 public:

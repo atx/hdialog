@@ -22,10 +22,11 @@
  * SOFTWARE.
  */
 
+#include "YesNoView.h"
+
 #include <Alignment.h>
 
 #include "HDialog.h"
-#include "YesNoView.h"
 
 YesNoView::YesNoView(BRect frame, BString title)
 	:

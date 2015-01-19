@@ -22,12 +22,13 @@
  * SOFTWARE.
  */
 
-#include <RadioButton.h>
-#include <CheckBox.h>
+#include "RadioView.h"
+
 #include <Alignment.h>
+#include <CheckBox.h>
+#include <RadioButton.h>
 
 #include "HDialog.h"
-#include "RadioView.h"
 
 RadioView::RadioView(BRect frame, BString title, BObjectList<BString> choices,
 			bool radio, BString bstr)

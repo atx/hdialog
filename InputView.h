@@ -25,10 +25,10 @@
 #ifndef _INPUTVIEW_H
 #define _INPUTVIEW_H
 
-#include <Message.h>
-#include <TextControl.h>
-#include <String.h>
 #include <Button.h>
+#include <Message.h>
+#include <String.h>
+#include <TextControl.h>
 
 #include "DialogView.h"
 

@@ -22,12 +22,13 @@
  * SOFTWARE.
  */
 
-#include <StringView.h>
-#include <GroupLayout.h>
+#include "InfoView.h"
+
 #include <Alignment.h>
+#include <GroupLayout.h>
+#include <StringView.h>
 
 #include "HDialog.h"
-#include "InfoView.h"
 
 InfoView::InfoView(BRect frame, BString title, BString bstr)
 	:

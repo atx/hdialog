@@ -25,8 +25,8 @@
 #ifndef _INFOVIEW_H
 #define _INFOVIEW_H
 
-#include <View.h>
 #include <Button.h>
+#include <View.h>
 
 #include "DialogView.h"
 

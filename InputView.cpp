@@ -22,13 +22,14 @@
  * SOFTWARE.
  */
 
-#include <StringView.h>
-#include <GroupLayout.h>
-#include <TextControl.h>
+#include "InputView.h"
+
 #include <Alignment.h>
+#include <GroupLayout.h>
+#include <StringView.h>
+#include <TextControl.h>
 
 #include "HDialog.h"
-#include "InputView.h"
 
 #include <iostream>
 

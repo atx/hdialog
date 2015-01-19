@@ -22,28 +22,29 @@
  * SOFTWARE.
  */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <getopt.h>
-
-#include <OS.h>
-#include <Screen.h>
-#include <TextView.h>
-#include <GroupLayout.h>
-#include <StringView.h>
-#include <ObjectList.h>
-#include <Button.h>
-
 #include "HDialog.h"
+
+#include <getopt.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#include <Button.h>
+#include <GroupLayout.h>
+#include <OS.h>
+#include <ObjectList.h>
+#include <Screen.h>
+#include <StringView.h>
+#include <TextView.h>
+
 #include "InfoView.h"
 #include "InputView.h"
-#include "StatusView.h"
 #include "RadioView.h"
+#include "StatusView.h"
 #include "YesNoView.h"
 
-#include <string>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
