@@ -48,7 +48,7 @@
 
 using namespace std;
 
-const char* kSignature = "application/hnotify";
+const char* kSignature = "application/x-vnd.hnotify";
 
 const char* kUsage = \
 					 "Usage:\n"
