@@ -26,7 +26,8 @@
 
 DialogView::DialogView(BRect frame, BString title)
 	:
-	BView(frame, NULL, B_FOLLOW_ALL_SIDES, 0)
+	BView(frame, NULL, B_FOLLOW_ALL_SIDES, 0),
+	fStringView(NULL)
 {
 	SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 

@@ -42,6 +42,7 @@
 #include "RadioView.h"
 #include "YesNoView.h"
 
+#include <string>
 #include <iostream>
 
 using namespace std;
@@ -71,7 +72,15 @@ const char* kUsage = \
 
 HDialogApp::HDialogApp()
 	:
-	BApplication(kSignature)
+	BApplication(kSignature),
+	fType(DIALOG_INFO),
+	fWidth(300),
+	fHeight(100),
+	fForceSize(false),
+	fArgs(NULL),
+	fIsModal(false),
+	fTitle("Dialog"),
+	fStdinThrShouldTerminate(false)
 {
 }
 

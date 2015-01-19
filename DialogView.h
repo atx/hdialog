@@ -37,7 +37,7 @@ public:
 
 protected:
 	BGroupLayout*	fLayout;
-	BStringView*	fStringView = NULL;
+	BStringView*	fStringView;
 };
 
 

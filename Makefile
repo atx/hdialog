@@ -105,7 +105,7 @@ SYMBOLS :=
 DEBUGGER := 
 
 #	Specify any additional compiler flags to be used.
-COMPILER_FLAGS = -std=c++11
+COMPILER_FLAGS = 
 
 #	Specify any additional linker flags to be used.
 LINKER_FLAGS = 

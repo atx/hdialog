@@ -56,17 +56,17 @@ private:
 	static status_t			StdinThread(void *);
 	void					HandleReadline(BString line);
 
-	enum HDialogType		fType = DIALOG_INFO;
-	int						fWidth = 300;
-	int						fHeight = 100;
-	bool					fForceSize = false;
+	enum HDialogType		fType;
+	int						fWidth;
+	int						fHeight;
+	bool					fForceSize;
 	BString					fText;
-	BObjectList<BString>*	fArgs = NULL;
+	BObjectList<BString>*	fArgs;
 	BView*					fView;
-	bool					fIsModal = false;
-	BString					fTitle = "Dialog";
+	bool					fIsModal;
+	BString					fTitle;
 	thread_id				fStdinThr;
-	bool					fStdinThrShouldTerminate = false;
+	bool					fStdinThrShouldTerminate;
 	BHandler				fStdinThrHandler;
 };
 
