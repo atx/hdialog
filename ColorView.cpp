@@ -1,7 +1,7 @@
 /* 
  * The MIT License (MIT)
  * 
- * Copyright (c) 2014 Josef Gajdusek
+ * Copyright (c) 2015 Josef Gajdusek
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,59 +22,51 @@
  * SOFTWARE.
  */
 
-#ifndef _HDIALOG_H
-#define _HDIALOG_H
+#include "ColorView.h"
 
-#include <Application.h>
-#include <Box.h>
-#include <OS.h>
-#include <ObjectList.h>
-#include <String.h>
-#include <StringList.h>
-#include <Window.h>
+#include <Alignment.h>
+#include <GroupLayout.h>
+#include <StringView.h>
+#include <TextControl.h>
 
-enum HDialogType {
-	DIALOG_INFO,
-	DIALOG_INPUT,
-	DIALOG_STATUS,
-	DIALOG_RADIO,
-	DIALOG_CHECKBOX,
-	DIALOG_YESNO,
-	DIALOG_COLOR,
-};
+#include "HDialog.h"
 
-class HDialogApp : public BApplication {
-public:
-							HDialogApp();
-	virtual					~HDialogApp();
+#include <iostream>
 
-	virtual void			ReadyToRun();
+ColorView::ColorView(BRect frame, BString title, BString bstr)
+	:
+	DialogView(frame, title)
+{
+	fColorControl = new BColorControl(BPoint(0, 0), B_CELLS_32x8, 10, "");
+	fLayout->AddView(fColorControl);
 
-	virtual void			ArgvReceived(int32 argc, char** argv);
-	virtual void			MessageReceived(BMessage* msg);
+	fButton = new BButton(bstr, new BMessage(MSG_PRESS));
+	fButton->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_VERTICAL_UNSET));
+	fLayout->AddView(fButton);
+}
 
-private:
-	static status_t			StdinThread(void *);
-	void					HandleReadline(BString line);
+ColorView::~ColorView()
+{
+}
 
-	enum HDialogType		fType;
-	int						fWidth;
-	int						fHeight;
-	bool					fForceSize;
-	BString					fText;
-	BObjectList<BString>*	fArgs;
-	BView*					fView;
-	bool					fIsModal;
-	BString					fTitle;
-	thread_id				fStdinThr;
-	bool					fStdinThrShouldTerminate;
-	BHandler				fStdinThrHandler;
-};
+void ColorView::AttachedToWindow()
+{
+	fButton->SetTarget(this);
+	Window()->SetDefaultButton(fButton);
+}
 
-enum {
-	MSG_SELECTED = 'sel0',
-	MSG_PRESS = 'btnp',
-	MSG_READLINE = 'rdln',
-};
-
-#endif
+void ColorView::MessageReceived(BMessage* msg)
+{
+	switch(msg->what) {
+		case MSG_PRESS: {
+			BMessage msg(MSG_SELECTED);
+			rgb_color color = fColorControl->ValueAsColor();
+			msg.SetString("value", BString().SetToFormat("#%02X%02X%02X",
+						color.red, color.green, color.blue));
+			be_app->PostMessage(&msg);
+			break;
+		}
+		default:
+			DialogView::MessageReceived(msg);
+	}
+}

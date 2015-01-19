@@ -1,7 +1,7 @@
 /* 
  * The MIT License (MIT)
  * 
- * Copyright (c) 2014 Josef Gajdusek
+ * Copyright (c) 2015 Josef Gajdusek
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,59 +22,28 @@
  * SOFTWARE.
  */
 
-#ifndef _HDIALOG_H
-#define _HDIALOG_H
+#ifndef _COLORVIEW_H
+#define _COLORVIEW_H
 
-#include <Application.h>
-#include <Box.h>
-#include <OS.h>
-#include <ObjectList.h>
+#include <Button.h>
+#include <Message.h>
 #include <String.h>
-#include <StringList.h>
-#include <Window.h>
+#include <ColorControl.h>
 
-enum HDialogType {
-	DIALOG_INFO,
-	DIALOG_INPUT,
-	DIALOG_STATUS,
-	DIALOG_RADIO,
-	DIALOG_CHECKBOX,
-	DIALOG_YESNO,
-	DIALOG_COLOR,
-};
+#include "DialogView.h"
 
-class HDialogApp : public BApplication {
+class ColorView : public DialogView {
 public:
-							HDialogApp();
-	virtual					~HDialogApp();
+						ColorView(BRect frame, BString title, BString bstr="OK");
+	virtual				~ColorView();
 
-	virtual void			ReadyToRun();
-
-	virtual void			ArgvReceived(int32 argc, char** argv);
-	virtual void			MessageReceived(BMessage* msg);
+	virtual void		MessageReceived(BMessage* msg);
+	virtual void		AttachedToWindow();
 
 private:
-	static status_t			StdinThread(void *);
-	void					HandleReadline(BString line);
-
-	enum HDialogType		fType;
-	int						fWidth;
-	int						fHeight;
-	bool					fForceSize;
-	BString					fText;
-	BObjectList<BString>*	fArgs;
-	BView*					fView;
-	bool					fIsModal;
-	BString					fTitle;
-	thread_id				fStdinThr;
-	bool					fStdinThrShouldTerminate;
-	BHandler				fStdinThrHandler;
-};
-
-enum {
-	MSG_SELECTED = 'sel0',
-	MSG_PRESS = 'btnp',
-	MSG_READLINE = 'rdln',
+	BColorControl*		fColorControl;
+	BButton*			fButton;
 };
 
 #endif
+

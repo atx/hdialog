@@ -37,6 +37,7 @@
 #include <StringView.h>
 #include <TextView.h>
 
+#include "ColorView.h"
 #include "InfoView.h"
 #include "InputView.h"
 #include "RadioView.h"
@@ -68,6 +69,7 @@ const char* kUsage = \
 					 "  --radio text opt1 opt2 opt3...\n"
 					 "  --checkbox text opt1 opt2 opt3...\n"
 					 "  --status text...\n"
+					 "  --color text...\n"
 					 "\n"
 					 "GitHub: https://github.com/atalax/hdialog\n";
 
@@ -132,6 +134,9 @@ void HDialogApp::ReadyToRun()
 		break;
 	case DIALOG_YESNO:
 		fView = new YesNoView(frame, fText);
+		break;
+	case DIALOG_COLOR:
+		fView = new ColorView(frame, fText);
 		break;
 	default:
 		Quit();
@@ -209,6 +214,7 @@ void HDialogApp::ArgvReceived(int32 argc, char** argv)
 		{ "radio", no_argument, (int *)(&fType), DIALOG_RADIO },
 		{ "checkbox", no_argument, (int *)(&fType), DIALOG_CHECKBOX },
 		{ "yesno", no_argument, (int *)(&fType), DIALOG_YESNO },
+		{ "color", no_argument, (int *)(&fType), DIALOG_COLOR },
 		{ 0, 0, 0, 0 }
 	};
 
@@ -262,6 +268,7 @@ void HDialogApp::ArgvReceived(int32 argc, char** argv)
 	case DIALOG_INPUT:
 	case DIALOG_STATUS:
 	case DIALOG_YESNO:
+	case DIALOG_COLOR:
 		for (int i = optind; i < argc; i++) {
 			fText += argv[i];
 			fText += ' ';
