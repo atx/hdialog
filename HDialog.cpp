@@ -54,7 +54,7 @@ const char* kUsage = \
 					 "\thdialog <type> [arguments]...\n"
 					 "Display a GUI dialog.\n"
 					 "\n"
-					 "  -h, --help       display this help\n"
+					 "      --help       display this help\n"
 					 "  -w, --width      width of the dialog\n"
 					 "  -h, --height     height of the dialog\n"
 					 "  -t, --title      title of the window\n"

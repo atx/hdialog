@@ -20,7 +20,7 @@ Usage:
     hdialog <type> [arguments]...
 Display a GUI dialog.
 
-  -h, --help       display this help
+      --help       display this help
   -w, --width      width of the dialog
   -h, --height     height of the dialog
   -t, --title      title of the window
