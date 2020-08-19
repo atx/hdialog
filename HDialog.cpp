@@ -64,14 +64,15 @@ const char* kUsage = \
 					 "\n"
 					 "Dialog types:\n"
 					 "  --info text...\n"
-					 "  --input text...\n"
+					 "  --yesno text...\n"
+					 "  --input text initial-text...\n"
 					 "  --status text...\n"
 					 "  --radio text opt1 opt2 opt3...\n"
 					 "  --checkbox text opt1 opt2 opt3...\n"
 					 "  --status text...\n"
 					 "  --color text...\n"
 					 "\n"
-					 "GitHub: https://github.com/atalax/hdialog\n";
+					 "GitHub: https://github.com/atx/hdialog\n";
 
 HDialogApp::HDialogApp()
 	:
@@ -83,6 +84,7 @@ HDialogApp::HDialogApp()
 	fArgs(NULL),
 	fIsModal(false),
 	fTitle("Dialog"),
+	fInitialInput(""),
 	fStdinThrShouldTerminate(false)
 {
 }
@@ -121,7 +123,7 @@ void HDialogApp::ReadyToRun()
 		fView = new InfoView(frame, fText);
 		break;
 	case DIALOG_INPUT:
-		fView = new InputView(frame, fText);
+		fView = new InputView(frame, fText, fInitialInput);
 		break;
 	case DIALOG_STATUS:
 		fView = new StatusView(frame, fText);
@@ -263,21 +265,28 @@ void HDialogApp::ArgvReceived(int32 argc, char** argv)
 		Quit();
 	}
 
+	int i;
 	switch(fType) {
 	case DIALOG_INFO:
-	case DIALOG_INPUT:
 	case DIALOG_STATUS:
 	case DIALOG_YESNO:
 	case DIALOG_COLOR:
-		for (int i = optind; i < argc; i++) {
+		for (i = optind; i < argc; i++) {
 			fText += argv[i];
 			fText += ' ';
 		}
 		break;
+	case DIALOG_INPUT:
+		i = optind;
+		fText += argv[i];
+		i++;
+		for (; i < argc; i++)
+			fInitialInput += argv[i];
+		break;
 	case DIALOG_RADIO:
 	case DIALOG_CHECKBOX:
 	default:
-		int i = optind;
+		i = optind;
 		fText += argv[i];
 		i++;
 		fArgs = new BObjectList<BString>(true);

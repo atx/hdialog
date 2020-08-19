@@ -66,6 +66,7 @@ private:
 	BView*					fView;
 	bool					fIsModal;
 	BString					fTitle;
+	BString					fInitialInput;
 	thread_id				fStdinThr;
 	bool					fStdinThrShouldTerminate;
 	BHandler				fStdinThrHandler;

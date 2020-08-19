@@ -28,14 +28,15 @@ Display a GUI dialog.
 
 Dialog types:
   --info text...
-  --input text...
+  --yesno text...
+  --input text initial-text...
   --status text...
   --radio text opt1 opt2 opt3...
   --checkbox text opt1 opt2 opt3...
   --status text...
   --color text...
 
-GitHub: https://github.com/atalax/hdialog
+GitHub: https://github.com/atx/hdialog
 ```
 #### Examples
 
@@ -56,7 +57,7 @@ $ hdialog -m --yesno "Do you really want to delete ~ ?"
 Ask for textual input:
 
 ```
-$ hdialog -m --input "Hello, what's yout name? :)"
+$ hdialog -m --input "Hello, what's yout name? :)" "John Smith"
 ```
 
 ![name-input](https://cloud.githubusercontent.com/assets/3966931/5182914/b51a726a-74a8-11e4-80f3-d3ffefd7ed8c.png)
@@ -69,7 +70,7 @@ $ hdialog -m --radio "Which is your favourite color?" Red Yellow Green Orange Bl
 
 ![radio-colors](https://cloud.githubusercontent.com/assets/3966931/5182967/5eeefe14-74a9-11e4-9673-3a9fd40033da.png)
 
-Or pick color:
+Or pick a color:
 
 ```
 $ hdialog -m --color Choose the color of your pony:

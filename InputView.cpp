@@ -51,6 +51,7 @@ InputView::~InputView()
 
 void InputView::AttachedToWindow()
 {
+	fTextControl->MakeFocus(true);
 	fButton->SetTarget(this);
 	Window()->SetDefaultButton(fButton);
 }
